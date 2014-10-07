@@ -30,6 +30,7 @@ namespace PixelTrack_Desktop
 
                 if (dlg.ShowDialog() == DialogResult.OK)
                 {
+                    toolStripStatusLabel1.Text = "Image " + dlg.FileName + " loaded.";
                     workingBitmap = new Bitmap(dlg.FileName);
                     displayAll();
                 }
@@ -38,48 +39,85 @@ namespace PixelTrack_Desktop
 
         private void displayAll()
         {
-            
             displayPicture();
-            displayPhysicalDimensions();
-            displayPixelGroups();
-        }
+            displayRawFormat();
 
-        private void displayPhysicalDimensions()
-        {
-            float Height = workingBitmap.PhysicalDimension.Height;
-            float Width = workingBitmap.PhysicalDimension.Width;
-
-            lblHeightPhysicalDimension.Text = "H: " + Height;
-            lblWidthPhysicalDimension.Text = "W: " + Width;
-        }
-
-        private void displayPixelGroups()
-        {
             //display size in pixels
             int Height = workingBitmap.Size.Height;
             int Width = workingBitmap.Size.Width;
 
             lblHeightInPixels.Text = "H: " + Height;
             lblWidthInPixels.Text = "W: " + Width;
+            lblPixelsAvailable.Text = Height * Width + " pixels/colors available";
 
-            toolStripProgressBar1.Maximum = Width * Height;
+            numericUpDownXLimit.Maximum = Width;
+            numericUpDownXStart.Maximum = Width - 1;
+            numericUpDownYStart.Maximum = Height - 1;
+            numericUpDownYLimit.Maximum = Height;
+        }
 
-            for (int x = 0; x < Width; x++)
+        private void displayPixelGroups()
+        {
+            toolStripProgressBar1.Visible = true;
+
+            int nPixelsEval = ((int)numericUpDownXLimit.Value - (int)numericUpDownXStart.Value)
+                                   *
+                              ((int)numericUpDownYLimit.Value - (int)numericUpDownYStart.Value);
+           
+            toolStripProgressBar1.Maximum = nPixelsEval;
+            progressBar1.Maximum = nPixelsEval;
+
+            for (int x = (int)numericUpDownXStart.Value; x < numericUpDownXLimit.Value; x++)
             {
-                for (int y = 0; y < Height; y++)
+                for (int y = (int)numericUpDownYStart.Value; y < numericUpDownYLimit.Value; y++)
                 {
                     toolStripProgressBar1.Increment(1);
+                    progressBar1.Increment(1);
 
                     Color pixelColor = workingBitmap.GetPixel(x, y);
 
-                    ListViewItem myListViewItem = new ListViewItem(pixelColor.Name);
+                    ListViewItem myListViewItem = new ListViewItem(x + ":" + y + ":" + pixelColor.Name);
                     myListViewItem.BackColor = pixelColor;
-                    myListViewItem.SubItems.Add(x.ToString());
-                    myListViewItem.SubItems.Add(y.ToString());
-                    myListViewItem.SubItems.Add(pixelColor.GetHashCode().ToString());
+                    myListViewItem.SubItems.Add(x + ':' + y.ToString());
 
                     listColors.Items.Add(myListViewItem);
                 }
+            }
+
+
+            //Draw on original image
+            //Pen pen = new Pen(Color.Red);
+            //////Graphics g = pictureBox1.CreateGraphics();
+            //Graphics g6 = Graphics.FromImage(workingBitmap);
+            //g6.DrawRectangle(pen, 
+            //                (int)numericUpDownXStart.Value, (int)numericUpDownYStart.Value,
+            //                (int)numericUpDownXLimit.Value - (int)numericUpDownXStart.Value,
+            //                (int)numericUpDownYLimit.Value - (int)numericUpDownYStart.Value);
+            
+            //Crop target to "target groupbox"
+            Rectangle cropRect = new Rectangle((int)numericUpDownXStart.Value, 
+                                               (int)numericUpDownYStart.Value,
+                                               (int)numericUpDownXLimit.Value - (int)numericUpDownXStart.Value,
+                                               (int)numericUpDownYLimit.Value - (int)numericUpDownYStart.Value
+                                               );
+            
+            Bitmap target = new Bitmap(cropRect.Width, cropRect.Height);
+
+            using(Graphics g = Graphics.FromImage(target))
+            {
+               g.DrawImage(workingBitmap, new Rectangle(0, 0, target.Width, target.Height), 
+                                cropRect,                        
+                                GraphicsUnit.Pixel);
+            }
+            pictureBoxTarget.Image = target;
+            
+
+            toolStripStatusLabel1.Text = "Added " + nPixelsEval + " pixels.";
+
+            if (toolStripProgressBar1.Value == toolStripProgressBar1.Maximum)
+            {
+                toolStripProgressBar1.Visible = false;
+                progressBar1.Value = 0;
             }
 
         }
@@ -103,36 +141,52 @@ namespace PixelTrack_Desktop
                 return "Unrecognised";
         }
 
-        private Hashtable d()
-        {
-            int x = 3, y = 5;
-            Hashtable colorDetails = new Hashtable();
-            Color pixelColor = workingBitmap.GetPixel(x, y);
-
-            colorDetails.Add("Name", pixelColor.Name);
-            colorDetails.Add("X", x);
-            colorDetails.Add("Y", y);
-            colorDetails.Add("AlphaComponentValue", pixelColor.A);
-            colorDetails.Add("BlueComponentValue", pixelColor.B);
-            colorDetails.Add("GreenComponentValue", pixelColor.G);
-            colorDetails.Add("RedComponentValue", pixelColor.R);
-            colorDetails.Add("IsKnownColor", pixelColor.IsKnownColor);
-            colorDetails.Add("IsNamedColor", pixelColor.IsNamedColor);
-            colorDetails.Add("IsSystemColor", pixelColor.IsSystemColor);
-            colorDetails.Add("32bitArgbValue", pixelColor.ToArgb().ToString());
-            colorDetails.Add("KnownColorValue", pixelColor.ToKnownColor().ToString());
-            colorDetails.Add("IsEmpty", pixelColor.IsEmpty);
-            colorDetails.Add("HueSaturationBrightness_SaturationValue", pixelColor.GetSaturation().ToString());
-            colorDetails.Add("HueSaturationBrightness_HueValue", pixelColor.GetHue().ToString());
-            colorDetails.Add("HueSaturationBrightness_BrightnessValue", pixelColor.GetBrightness().ToString());
-            colorDetails.Add("HashCode", pixelColor.GetHashCode().ToString());
-
-            return colorDetails;
-        }
-
         private void displayPicture()
         {
             pictureBox1.Image = workingBitmap ;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            toolStripProgressBar1.Value = 0;
+            progressBar1.Value = 0;
+
+            toolStripStatusLabel1.Text = "";
+            displayPixelGroups();
+        }
+
+        private void listColors_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
+        {
+            if (listColors.SelectedItems.Count > 0)
+            {
+                string[] xy = listColors.SelectedItems[0].Text.Split(':');
+                Color pixelColor = workingBitmap.GetPixel(int.Parse(xy[0]), int.Parse(xy[1]));
+                lblR.Text = "A " + pixelColor.A.ToString();
+                lblR.Text = "R " + pixelColor.R.ToString();
+                lblG.Text = "G " + pixelColor.G.ToString();
+                lblB.Text = "B " + pixelColor.B.ToString();
+                lblSaturation.Text = "Saturation " + pixelColor.GetSaturation();
+                lblBrightness.Text = "Brightness " + pixelColor.GetBrightness();
+                lblHue.Text = "Hue " + pixelColor.GetHue();
+                lblHashcode.Text = "Hashcode " + pixelColor.GetHashCode();
+                lblName.Text = "Name " + pixelColor.Name;
+            }
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            toolStripStatusLabel1.Text = "Pixel list cleared.";
+            listColors.Clear();
+        }
+
+        private void trackBar1_Scroll(object sender, EventArgs e)
+        {
+            lblReducePercentage.Text = trackBar1.Value + "%";
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
