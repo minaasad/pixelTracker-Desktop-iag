@@ -165,11 +165,11 @@ namespace PixelTrack_Desktop
                 lblR.Text = "R " + pixelColor.R.ToString();
                 lblG.Text = "G " + pixelColor.G.ToString();
                 lblB.Text = "B " + pixelColor.B.ToString();
-                lblSaturation.Text = "Saturation " + pixelColor.GetSaturation();
-                lblBrightness.Text = "Brightness " + pixelColor.GetBrightness();
-                lblHue.Text = "Hue " + pixelColor.GetHue();
-                lblHashcode.Text = "Hashcode " + pixelColor.GetHashCode();
-                lblName.Text = "Name " + pixelColor.Name;
+                lblSaturation.Text = "S " + pixelColor.GetSaturation();
+                lblBrightness.Text = "B " + pixelColor.GetBrightness();
+                lblHue.Text = "H " + pixelColor.GetHue();
+                lblHashcode.Text = "Hashcode: " + pixelColor.GetHashCode();
+                lblName.Text = "Name: " + pixelColor.Name;
             }
         }
 
@@ -177,11 +177,6 @@ namespace PixelTrack_Desktop
         {
             toolStripStatusLabel1.Text = "Pixel list cleared.";
             listColors.Clear();
-        }
-
-        private void trackBar1_Scroll(object sender, EventArgs e)
-        {
-            lblReducePercentage.Text = trackBar1.Value + "%";
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)

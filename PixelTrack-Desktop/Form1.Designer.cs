@@ -69,16 +69,15 @@
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.lblReducePercentage = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.trackBar1 = new System.Windows.Forms.TrackBar();
-            this.button2 = new System.Windows.Forms.Button();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.pictureBoxTarget = new System.Windows.Forms.PictureBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.lblRawFormat = new System.Windows.Forms.Label();
+            this.pIXELSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sEARCHToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mostCommonColorsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.knownColorsOnlyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -89,8 +88,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownXStart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownYLimit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownXLimit)).BeginInit();
-            this.groupBox5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.groupBox6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTarget)).BeginInit();
             this.groupBox4.SuspendLayout();
@@ -99,9 +96,9 @@
             // pictureBox1
             // 
             this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox1.Location = new System.Drawing.Point(6, 24);
+            this.pictureBox1.Location = new System.Drawing.Point(6, 19);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(132, 103);
+            this.pictureBox1.Size = new System.Drawing.Size(132, 108);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
@@ -132,7 +129,8 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fILEToolStripMenuItem});
+            this.fILEToolStripMenuItem,
+            this.pIXELSToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(611, 24);
@@ -190,9 +188,9 @@
             // 
             this.groupBox2.Controls.Add(this.lblWidthInPixels);
             this.groupBox2.Controls.Add(this.lblHeightInPixels);
-            this.groupBox2.Location = new System.Drawing.Point(326, 501);
+            this.groupBox2.Location = new System.Drawing.Point(461, 500);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(74, 79);
+            this.groupBox2.Size = new System.Drawing.Size(74, 80);
             this.groupBox2.TabIndex = 8;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Size in pixels";
@@ -239,7 +237,7 @@
             this.groupBox3.Controls.Add(this.lblPixelsAvailable);
             this.groupBox3.Location = new System.Drawing.Point(12, 362);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(308, 149);
+            this.groupBox3.Size = new System.Drawing.Size(308, 133);
             this.groupBox3.TabIndex = 9;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Colors";
@@ -257,7 +255,7 @@
             // lblName
             // 
             this.lblName.AutoSize = true;
-            this.lblName.Location = new System.Drawing.Point(208, 94);
+            this.lblName.Location = new System.Drawing.Point(143, 103);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(35, 13);
             this.lblName.TabIndex = 27;
@@ -266,7 +264,7 @@
             // lblHashcode
             // 
             this.lblHashcode.AutoSize = true;
-            this.lblHashcode.Location = new System.Drawing.Point(67, 133);
+            this.lblHashcode.Location = new System.Drawing.Point(143, 116);
             this.lblHashcode.Name = "lblHashcode";
             this.lblHashcode.Size = new System.Drawing.Size(56, 13);
             this.lblHashcode.TabIndex = 26;
@@ -275,7 +273,7 @@
             // lblA
             // 
             this.lblA.AutoSize = true;
-            this.lblA.Location = new System.Drawing.Point(11, 94);
+            this.lblA.Location = new System.Drawing.Point(143, 90);
             this.lblA.Name = "lblA";
             this.lblA.Size = new System.Drawing.Size(14, 13);
             this.lblA.TabIndex = 25;
@@ -284,34 +282,34 @@
             // lblHue
             // 
             this.lblHue.AutoSize = true;
-            this.lblHue.Location = new System.Drawing.Point(67, 120);
+            this.lblHue.Location = new System.Drawing.Point(67, 90);
             this.lblHue.Name = "lblHue";
-            this.lblHue.Size = new System.Drawing.Size(27, 13);
+            this.lblHue.Size = new System.Drawing.Size(15, 13);
             this.lblHue.TabIndex = 24;
-            this.lblHue.Text = "Hue";
+            this.lblHue.Text = "H";
             // 
             // lblBrightness
             // 
             this.lblBrightness.AutoSize = true;
-            this.lblBrightness.Location = new System.Drawing.Point(67, 107);
+            this.lblBrightness.Location = new System.Drawing.Point(67, 103);
             this.lblBrightness.Name = "lblBrightness";
-            this.lblBrightness.Size = new System.Drawing.Size(56, 13);
+            this.lblBrightness.Size = new System.Drawing.Size(14, 13);
             this.lblBrightness.TabIndex = 23;
-            this.lblBrightness.Text = "Brightness";
+            this.lblBrightness.Text = "B";
             // 
             // lblSaturation
             // 
             this.lblSaturation.AutoSize = true;
-            this.lblSaturation.Location = new System.Drawing.Point(67, 94);
+            this.lblSaturation.Location = new System.Drawing.Point(67, 116);
             this.lblSaturation.Name = "lblSaturation";
-            this.lblSaturation.Size = new System.Drawing.Size(55, 13);
+            this.lblSaturation.Size = new System.Drawing.Size(14, 13);
             this.lblSaturation.TabIndex = 22;
-            this.lblSaturation.Text = "Saturation";
+            this.lblSaturation.Text = "S";
             // 
             // lblG
             // 
             this.lblG.AutoSize = true;
-            this.lblG.Location = new System.Drawing.Point(11, 120);
+            this.lblG.Location = new System.Drawing.Point(11, 103);
             this.lblG.Name = "lblG";
             this.lblG.Size = new System.Drawing.Size(15, 13);
             this.lblG.TabIndex = 21;
@@ -320,7 +318,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(11, 70);
+            this.label3.Location = new System.Drawing.Point(11, 68);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(39, 13);
             this.label3.TabIndex = 17;
@@ -329,7 +327,7 @@
             // lblB
             // 
             this.lblB.AutoSize = true;
-            this.lblB.Location = new System.Drawing.Point(11, 133);
+            this.lblB.Location = new System.Drawing.Point(11, 116);
             this.lblB.Name = "lblB";
             this.lblB.Size = new System.Drawing.Size(14, 13);
             this.lblB.TabIndex = 19;
@@ -337,7 +335,7 @@
             // 
             // numericUpDownYStart
             // 
-            this.numericUpDownYStart.Location = new System.Drawing.Point(55, 68);
+            this.numericUpDownYStart.Location = new System.Drawing.Point(55, 66);
             this.numericUpDownYStart.Name = "numericUpDownYStart";
             this.numericUpDownYStart.Size = new System.Drawing.Size(58, 20);
             this.numericUpDownYStart.TabIndex = 16;
@@ -345,7 +343,7 @@
             // lblR
             // 
             this.lblR.AutoSize = true;
-            this.lblR.Location = new System.Drawing.Point(11, 107);
+            this.lblR.Location = new System.Drawing.Point(11, 90);
             this.lblR.Name = "lblR";
             this.lblR.Size = new System.Drawing.Size(15, 13);
             this.lblR.TabIndex = 19;
@@ -370,7 +368,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(119, 70);
+            this.label2.Location = new System.Drawing.Point(119, 68);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(38, 13);
             this.label2.TabIndex = 13;
@@ -378,7 +376,7 @@
             // 
             // numericUpDownYLimit
             // 
-            this.numericUpDownYLimit.Location = new System.Drawing.Point(163, 68);
+            this.numericUpDownYLimit.Location = new System.Drawing.Point(163, 66);
             this.numericUpDownYLimit.Name = "numericUpDownYLimit";
             this.numericUpDownYLimit.Size = new System.Drawing.Size(58, 20);
             this.numericUpDownYLimit.TabIndex = 12;
@@ -401,7 +399,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(227, 42);
+            this.button1.Location = new System.Drawing.Point(227, 41);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 46);
             this.button1.TabIndex = 1;
@@ -438,59 +436,6 @@
             // 
             this.columnHeader1.Text = "ColumnHeadfer";
             // 
-            // groupBox5
-            // 
-            this.groupBox5.Controls.Add(this.lblReducePercentage);
-            this.groupBox5.Controls.Add(this.label5);
-            this.groupBox5.Controls.Add(this.trackBar1);
-            this.groupBox5.Controls.Add(this.button2);
-            this.groupBox5.Location = new System.Drawing.Point(12, 517);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(308, 63);
-            this.groupBox5.TabIndex = 10;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Reduce size";
-            // 
-            // lblReducePercentage
-            // 
-            this.lblReducePercentage.AutoSize = true;
-            this.lblReducePercentage.Location = new System.Drawing.Point(155, 32);
-            this.lblReducePercentage.Name = "lblReducePercentage";
-            this.lblReducePercentage.Size = new System.Drawing.Size(27, 13);
-            this.lblReducePercentage.TabIndex = 32;
-            this.lblReducePercentage.Text = "10%";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(155, 18);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(59, 13);
-            this.label5.TabIndex = 31;
-            this.label5.Text = "Reduce by";
-            // 
-            // trackBar1
-            // 
-            this.trackBar1.Location = new System.Drawing.Point(6, 17);
-            this.trackBar1.Maximum = 90;
-            this.trackBar1.Minimum = 10;
-            this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(148, 45);
-            this.trackBar1.SmallChange = 10;
-            this.trackBar1.TabIndex = 30;
-            this.trackBar1.TickFrequency = 10;
-            this.trackBar1.Value = 10;
-            this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(227, 32);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 25);
-            this.button2.TabIndex = 29;
-            this.button2.Text = "Apply";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
             // progressBar1
             // 
             this.progressBar1.Location = new System.Drawing.Point(12, 333);
@@ -511,9 +456,9 @@
             // pictureBoxTarget
             // 
             this.pictureBoxTarget.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBoxTarget.Location = new System.Drawing.Point(7, 24);
+            this.pictureBoxTarget.Location = new System.Drawing.Point(7, 19);
             this.pictureBoxTarget.Name = "pictureBoxTarget";
-            this.pictureBoxTarget.Size = new System.Drawing.Size(110, 103);
+            this.pictureBoxTarget.Size = new System.Drawing.Size(110, 108);
             this.pictureBoxTarget.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxTarget.TabIndex = 3;
             this.pictureBoxTarget.TabStop = false;
@@ -521,9 +466,9 @@
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.lblRawFormat);
-            this.groupBox4.Location = new System.Drawing.Point(406, 500);
+            this.groupBox4.Location = new System.Drawing.Point(546, 500);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(74, 79);
+            this.groupBox4.Size = new System.Drawing.Size(53, 80);
             this.groupBox4.TabIndex = 13;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Raw Format";
@@ -531,11 +476,40 @@
             // lblRawFormat
             // 
             this.lblRawFormat.AutoSize = true;
-            this.lblRawFormat.Location = new System.Drawing.Point(6, 37);
+            this.lblRawFormat.Location = new System.Drawing.Point(6, 38);
             this.lblRawFormat.Name = "lblRawFormat";
             this.lblRawFormat.Size = new System.Drawing.Size(14, 13);
             this.lblRawFormat.TabIndex = 0;
             this.lblRawFormat.Text = "*.";
+            // 
+            // pIXELSToolStripMenuItem
+            // 
+            this.pIXELSToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.sEARCHToolStripMenuItem});
+            this.pIXELSToolStripMenuItem.Name = "pIXELSToolStripMenuItem";
+            this.pIXELSToolStripMenuItem.Size = new System.Drawing.Size(54, 20);
+            this.pIXELSToolStripMenuItem.Text = "PIXELS";
+            // 
+            // sEARCHToolStripMenuItem
+            // 
+            this.sEARCHToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mostCommonColorsToolStripMenuItem,
+            this.knownColorsOnlyToolStripMenuItem});
+            this.sEARCHToolStripMenuItem.Name = "sEARCHToolStripMenuItem";
+            this.sEARCHToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.sEARCHToolStripMenuItem.Text = "Find From List";
+            // 
+            // mostCommonColorsToolStripMenuItem
+            // 
+            this.mostCommonColorsToolStripMenuItem.Name = "mostCommonColorsToolStripMenuItem";
+            this.mostCommonColorsToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
+            this.mostCommonColorsToolStripMenuItem.Text = "Most Common Colors";
+            // 
+            // knownColorsOnlyToolStripMenuItem
+            // 
+            this.knownColorsOnlyToolStripMenuItem.Name = "knownColorsOnlyToolStripMenuItem";
+            this.knownColorsOnlyToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
+            this.knownColorsOnlyToolStripMenuItem.Text = "Known Colors Only";
             // 
             // Form1
             // 
@@ -545,7 +519,6 @@
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.progressBar1);
-            this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.listColors);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
@@ -556,7 +529,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Pixel Tracker";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
@@ -571,9 +544,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownXStart)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownYLimit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownXLimit)).EndInit();
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             this.groupBox6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTarget)).EndInit();
             this.groupBox4.ResumeLayout(false);
@@ -624,11 +594,6 @@
         private System.Windows.Forms.Label lblHashcode;
         private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.Button btnClear;
-        private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.Label lblReducePercentage;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TrackBar trackBar1;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ProgressBar progressBar1;
@@ -636,6 +601,10 @@
         private System.Windows.Forms.PictureBox pictureBoxTarget;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Label lblRawFormat;
+        private System.Windows.Forms.ToolStripMenuItem pIXELSToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem sEARCHToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mostCommonColorsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem knownColorsOnlyToolStripMenuItem;
     }
 }
 
