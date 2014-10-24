@@ -35,7 +35,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fILEToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.oPENToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.nEWIMAGEToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.NewImageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -74,10 +74,6 @@
             this.pictureBoxTarget = new System.Windows.Forms.PictureBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.lblRawFormat = new System.Windows.Forms.Label();
-            this.pIXELSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.sEARCHToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.mostCommonColorsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.knownColorsOnlyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -129,8 +125,7 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fILEToolStripMenuItem,
-            this.pIXELSToolStripMenuItem});
+            this.fILEToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(611, 24);
@@ -150,27 +145,27 @@
             // oPENToolStripMenuItem
             // 
             this.oPENToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.nEWIMAGEToolStripMenuItem});
+            this.NewImageToolStripMenuItem});
             this.oPENToolStripMenuItem.Name = "oPENToolStripMenuItem";
-            this.oPENToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.oPENToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.oPENToolStripMenuItem.Text = "Open";
             // 
-            // nEWIMAGEToolStripMenuItem
+            // NewImageToolStripMenuItem
             // 
-            this.nEWIMAGEToolStripMenuItem.Name = "nEWIMAGEToolStripMenuItem";
-            this.nEWIMAGEToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
-            this.nEWIMAGEToolStripMenuItem.Text = "Image";
-            this.nEWIMAGEToolStripMenuItem.Click += new System.EventHandler(this.nEWIMAGEToolStripMenuItem_Click);
+            this.NewImageToolStripMenuItem.Name = "NewImageToolStripMenuItem";
+            this.NewImageToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.NewImageToolStripMenuItem.Text = "Image";
+            this.NewImageToolStripMenuItem.Click += new System.EventHandler(this.NewImageToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(100, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -405,7 +400,7 @@
             this.button1.TabIndex = 1;
             this.button1.Text = "Evaluate";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.btnEvaluate_Click);
             // 
             // lblPixelsAvailable
             // 
@@ -482,35 +477,6 @@
             this.lblRawFormat.TabIndex = 0;
             this.lblRawFormat.Text = "*.";
             // 
-            // pIXELSToolStripMenuItem
-            // 
-            this.pIXELSToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.sEARCHToolStripMenuItem});
-            this.pIXELSToolStripMenuItem.Name = "pIXELSToolStripMenuItem";
-            this.pIXELSToolStripMenuItem.Size = new System.Drawing.Size(54, 20);
-            this.pIXELSToolStripMenuItem.Text = "PIXELS";
-            // 
-            // sEARCHToolStripMenuItem
-            // 
-            this.sEARCHToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mostCommonColorsToolStripMenuItem,
-            this.knownColorsOnlyToolStripMenuItem});
-            this.sEARCHToolStripMenuItem.Name = "sEARCHToolStripMenuItem";
-            this.sEARCHToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.sEARCHToolStripMenuItem.Text = "Find From List";
-            // 
-            // mostCommonColorsToolStripMenuItem
-            // 
-            this.mostCommonColorsToolStripMenuItem.Name = "mostCommonColorsToolStripMenuItem";
-            this.mostCommonColorsToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
-            this.mostCommonColorsToolStripMenuItem.Text = "Most Common Colors";
-            // 
-            // knownColorsOnlyToolStripMenuItem
-            // 
-            this.knownColorsOnlyToolStripMenuItem.Name = "knownColorsOnlyToolStripMenuItem";
-            this.knownColorsOnlyToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
-            this.knownColorsOnlyToolStripMenuItem.Text = "Known Colors Only";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -560,7 +526,7 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fILEToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem oPENToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem nEWIMAGEToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem NewImageToolStripMenuItem;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label lblWidthInPixels;
@@ -601,10 +567,6 @@
         private System.Windows.Forms.PictureBox pictureBoxTarget;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Label lblRawFormat;
-        private System.Windows.Forms.ToolStripMenuItem pIXELSToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem sEARCHToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem mostCommonColorsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem knownColorsOnlyToolStripMenuItem;
     }
 }
 
