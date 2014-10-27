@@ -1,5 +1,6 @@
-pixelTracker-Desktop-iag
+Pixel Tracker Software
 ========================
+> Git repo https://github.com/minaasad/pixelTracker-Desktop-iag 
 
 1. The Pixel Tracker software is designed to help you find exact colour(s) in any image. Pixel Tracker is an intelligent agent capable of selecting any area determined by the user in an image and list all the detailed colours in it accordingly. The colour values shown in the pallet models are such as RGB and HEX, which can help anyone in finding the exact matching colour and the desired pallet model.
 
